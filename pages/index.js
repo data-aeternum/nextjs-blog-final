@@ -1,5 +1,7 @@
 // Import the shared page metadata component.
 import Head from 'next/head'; // Imports the Head component so the page can use document metadata like the title.
+// Import Next.js client-side navigation links.
+import Link from 'next/link'; // Imports the Link component used to connect each post to its dynamic route.
 // Import the shared site layout and its title.
 import Layout, { siteTitle } from '../components/layout'; // Imports the layout wrapper and the shared siteTitle value used in the page header.
 // Import reusable typography styles.
@@ -43,7 +45,7 @@ export default function Home({ allPostsData }) { // Defines and exports the Home
           {/* Render one list item for each JSON post. */}
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
               {id}
               <br />
